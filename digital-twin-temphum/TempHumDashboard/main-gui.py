@@ -9,6 +9,7 @@ def on_message_received(topic, payload, dup, qos, retain, **kwargs):
     data = json.loads(payload)
     temperatureValue.set(data["temperature"])
     humidityValue.set(data["humidity"])
+    ledState.set(data["led"])
     
 #On ledon button click publish to led topic the high value  
 def on_ledon_click():
@@ -60,13 +61,23 @@ tk.Label(root, text="Humidity:" ).grid(row=1, column=1)
 humidityValue = tk.StringVar(value="Undefined")
 tk.Label(root, textvariable=humidityValue).grid(row=1, column=2)
 
+#Led label
+tk.Label(root, text="Led State:" ).grid(row=2, column=1)
+ledState = tk.StringVar(value="Undefined")
+tk.Label(root, textvariable=ledState).grid(row=2, column=2)
+
 #LedOn button
 tk.Button(root, text="LED ON", command=on_ledon_click).grid(row = 3, column=1)
 
 #LedOff button
 tk.Button(root, text="LED OFF", fg="green", command=on_ledoff_click).grid(row=3, column=2)
 
-#Threads start
+#Thread start
+def on_closing():
+    mqttClient.disconnect()
+    root.destroy()
+
+root.protocol("WM_DELETE_WINDOW", on_closing)
 root.mainloop()
 
 

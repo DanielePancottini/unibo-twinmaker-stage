@@ -1,15 +1,16 @@
 package temphum.service.model;
 
-public class HTMessage {
+public class THMessage {
 
     private double temperature;
     private double humidity;
+    private int led;
 
     public double getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(double humidity) {
+    public void setHumidity(final double humidity) {
         this.humidity = humidity;
     }
 
@@ -17,8 +18,16 @@ public class HTMessage {
         return temperature;
     }
 
-    public void setTemperature(double temperature) {
+    public void setTemperature(final double temperature) {
         this.temperature = temperature;
+    }
+
+    public int getLed() {
+        return led;
+    }
+
+    public void setLed(final int led) {
+        this.led = led;
     }
 
 }

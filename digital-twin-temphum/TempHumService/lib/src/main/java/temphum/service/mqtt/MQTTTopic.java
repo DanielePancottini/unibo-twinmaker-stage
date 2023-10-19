@@ -3,7 +3,8 @@ package temphum.service.mqtt;
 public enum MQTTTopic {
 
     TEST("test"),
-    TEMPHUMID("temphumid");
+    TEMPHUMID("temphumid"),
+    LED("led");
 
     private final String name;
 
