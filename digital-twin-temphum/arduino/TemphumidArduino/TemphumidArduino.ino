@@ -5,7 +5,7 @@
 #define DHTTYPE DHT11 
 
 #define BUTTON_PIN 4
-#define LED_PIN 13
+#define LED_PIN 8
 
 DHT dht(DHTPIN, DHTTYPE);
 
